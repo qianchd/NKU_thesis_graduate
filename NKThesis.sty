@@ -26,12 +26,16 @@
 \ProcessOptions\relax
 
 \def\jiacu{\special{pdf: literal direct q 0.2 w 2 Tr}\aftergroup\jiacuu}
+\def\jiacucu{\special{pdf: literal direct q 0.3 w 2 Tr}\aftergroup\jiacuu}
 \def\jiacuu{\special{pdf: literal 0 Tr}}
 
 \ifxetex
   \RequirePackage{xeCJK}
   \edef\CJK@UnicodeEnc{UTF8}
-  \def\CJKaddEncHook#1#2{\expandafter\def\csname xeCJK@enc@#1\endcsname{#2}}
+  % \def\CJKaddEncHook#1#2{\expandafter\def\csname xeCJK@enc@#1\endcsname{#2}}
+  \ifx\CJKaddEncHook#1#2\undefined
+    \def\CJKaddEncHook#1#2{\expandafter\def\csname xeCJK@enc@#1\endcsname{#2}}
+  \fi
   \def\Unicode#1#2{\@tempcnta#1\relax
     \multiply\@tempcnta 256\relax
     \advance\@tempcnta#2\relax
@@ -667,8 +671,8 @@
     \pagestyle{empty}
     \@twosidefalse
     \NKTtitlepage
-    \NKTauthorization
     \NKTdeclaration
+    \NKTauthorization
     \clearpage
     \ifx\NKT@key@lunwenleibie\NKT@string@boshi
       \global\@twosidetrue
