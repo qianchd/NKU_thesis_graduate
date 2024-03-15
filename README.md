@@ -37,6 +37,4 @@ sudo fc-cache -fv
 ```
 
 ## 待办
-- 因Overleaf不支持商业化字体，目前仍未适配Overleaf上XeLaTeX编译。
-- XeLaTeX编译下有数十个warnings，PdfLaTeX下有十几个, 精力有限。
-- Proofreading: 目前授权书和原创性声明的格式和内容是否能通过校验。
+- 因Overleaf不支持商业化字体，目前仍未适配Overleaf上XeLaTeX编译
