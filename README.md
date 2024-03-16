@@ -6,7 +6,7 @@ Github: [NKU_thesis_graduate](https://github.com/qianchd/NKU_thesis_graduate)
 
 Overleaf: [NKU_thesis_graduate](https://www.overleaf.com/read/rytpskmrrhjc#f350c6)
 
-南开大学图书馆: [NKU_thesis_graduate](https://www.overleaf.com/read/rytpskmrrhjc#f350c6](https://libpaper.nankai.edu.cn/newlist.action)
+南开大学图书馆: [NKU_thesis_graduate](https://libpaper.nankai.edu.cn/newlist.action)
 
 ## 历史来源
 该毕业模板在互联网上有非常多版本，其最早的来源应是数学院[孙文昌老师](https://my.nankai.edu.cn/sms/swc/list.htm)制作的， 可惜原始的数院[个人网页](http://222.30.48.141/~sunwch/)已经无法访问。孙老师是早期[xeCJK](https://ctan.org/pkg/xecjk)包的作者，也基本是南开数学院学生LaTeX语言的启蒙人，大部分数学院本科生的LaTeX大概是孙老师的暑期小学期课程教授的。
