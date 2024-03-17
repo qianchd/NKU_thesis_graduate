@@ -1,5 +1,4 @@
-# NKU_thesis_graduate
-南开大学硕博毕业论文模板（2024）- NKU thesis template for graduate students
+# 南开大学硕博毕业论文模板（2024）- NKU thesis template for graduate students (2024)
 
 ## 链接
 Github: [NKU_thesis_graduate](https://github.com/qianchd/NKU_thesis_graduate)
