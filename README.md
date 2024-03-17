@@ -18,7 +18,7 @@ Overleaf: [NKU_thesis_graduate](https://www.overleaf.com/read/rytpskmrrhjc#f350c
 
 - 添加2024年最新版南开大学研究生学位论文写作规范。
 - 添加相应需要的字体。
-- 修改授权书和原创性声明为2024年新版 (未通过相关老师校对以及验证。作者只保证目前肉眼所见和word版本基本排版一致。作者不保证按此版本提交可以通过图书馆检查)。
+- 修改授权书和原创性声明为2024年新版。
 - 修改XeLaTeX编译下关于 Time News Roman 英文字体支持的bug。这是一个存在许多年的bug。
 - 在Texlive2022、Texlive2023、MikTex等发行版下，在Windows11系统，wsl2-ubuntu 以及 Ubuntu系统下测试编译通过。
 
