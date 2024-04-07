@@ -193,6 +193,13 @@
 \def\section{
   \@startsection{section}{1}{\z@}{24pt}{6pt}{\sectionformat}}
 
+\if@NKT@English
+\def\subsection{
+  \@startsection{subsection}{2}{\z@}{12pt}{6pt}{\subsectionformat}}
+
+\def\subsubsection{
+  \@startsection{subsubsection}{3}{\z@}{12pt}{6pt}{\subsubsectionformat}}
+\else
 \if@NKT@ENheadings
 \def\subsection{
   \@startsection{subsection}{2}{\z@}{12pt}{6pt}{\subsectionformat}}
@@ -207,6 +214,7 @@
 \def\subsubsection@cntformat{（\thesubsubsection）}
 \def\subsubsection{
   \@startsection{subsubsection}{3}{2em}{12pt}{6pt}{\subsubsectionformat}}
+\fi
 \fi
 
 \def\sectionspecial{\jiacu}

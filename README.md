@@ -36,6 +36,7 @@ sudo fc-cache -fv
 ```
 
 ## 待办
+以下待办欢迎PR。
 - ~~因Overleaf不支持商业化字体，目前仍未适配Overleaf.~~ —— 更新，当前版本支持overleaf上 pdflatex 编译，[模板](https://www.overleaf.com/read/rytpskmrrhjc#f350c6)；尚未支持XeLatex编译。
 - XeLaTeX编译下有数十个warnings，PdfLaTeX下有十几个, 精力有限，待后来人改进。
-- Proofreading: 目前授权书和原创性声明的格式和内容是否能通过校验。
+- main.tex 对应的帮助文档是过时的，需要更新。
