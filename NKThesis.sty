@@ -21,7 +21,9 @@
     \fi}}
 
 \newif\if@NKT@English
+\newif\if@NKT@ENheadings
 \DeclareOption{English}{\@NKT@Englishtrue}
+\DeclareOption{ENheadings}{\@NKT@ENheadingstrue}
 
 \ProcessOptions\relax
 
@@ -104,9 +106,18 @@
   \def\figurename{Figure}
   \def\NKT@proof{Proof}
 \else
-  \def\chaptername{第\CJKnumber{\arabic{chapter}}章}
-  \def\thesection{第\CJKnumber{\arabic{section}}节}
-  \def\thesubsection{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+  \if@NKT@ENheadings
+    \def\chaptername{\arabic{chapter}}
+    \def\thesection{\arabic{chapter}.\arabic{section}}
+    \def\thesubsection{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+    \def\thesubsubsection{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+  \else
+    \def\chaptername{第\CJKnumber{\arabic{chapter}}章}
+    \def\thesection{第\CJKnumber{\arabic{section}}节}
+    % \def\thesubsection{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+    \def\thesubsection{{\CJKnumber{\arabic{subsection}}}}
+    \def\thesubsubsection{\CJKnumber{\arabic{subsubsection}}}
+  \fi
   \def\contentsname{目录}
   \def\appendixnamenonumber{附录}
   \def\nkrefname{参考文献}
@@ -174,23 +185,43 @@
   \fi
   \@xsect{#5}}
 
-\def\@seccntformat#1{\csname the#1\endcsname\quad}
+% \def\@seccntformat#1{\csname the#1\endcsname\quad}
+\def\@seccntformat#1{\@ifundefined{#1@cntformat}%
+   {\csname the#1\endcsname\quad}%    default
+   {\csname #1@cntformat\endcsname}}% enable indiv. control
 
 \def\section{
   \@startsection{section}{1}{\z@}{24pt}{6pt}{\sectionformat}}
 
+\if@NKT@ENheadings
 \def\subsection{
   \@startsection{subsection}{2}{\z@}{12pt}{6pt}{\subsectionformat}}
 
 \def\subsubsection{
   \@startsection{subsubsection}{3}{\z@}{12pt}{6pt}{\subsubsectionformat}}
+\else
+\def\subsection@cntformat{\thesubsection、}
+\def\subsection{
+  \@startsection{subsection}{2}{2em}{12pt}{6pt}{\subsectionformat}}
+
+\def\subsubsection@cntformat{（\thesubsubsection）}
+\def\subsubsection{
+  \@startsection{subsubsection}{3}{2em}{12pt}{6pt}{\subsubsectionformat}}
+\fi
 
 \def\sectionspecial{\jiacu}
 \def\partformat{\centering\huge\bfseries}
-\def\chapterformat{\centering\fontsize{16}{19}\bfseries\jiacu}
-\def\sectionformat{\centering\bfseries\zihaosi}
-\def\subsectionformat{\bfseries\fontsize{13}{15}\selectfont}
-\def\subsubsectionformat{\bfseries\zihaowu}
+\if@NKT@ENheadings
+  \def\chapterformat{\fontsize{16}{19}\bfseries\jiacu}
+  \def\sectionformat{\bfseries\zihaosi}
+  \def\subsectionformat{\bfseries\fontsize{13}{15}\selectfont}
+  \def\subsubsectionformat{\bfseries\zihaowu}
+\else
+  \def\chapterformat{\centering\fontsize{16}{19}\bfseries\jiacu}
+  \def\sectionformat{\centering\bfseries\zihaosi}
+  \def\subsectionformat{\bfseries\fontsize{13}{15}\selectfont}
+  \def\subsubsectionformat{\bfseries\zihaowu}
+\fi
 
 
 \def\chapter{
@@ -299,15 +330,17 @@
  \newdimen\tocsectiontitlewidth
  \newdimen\tocsubsectiontitlewidth
 
-\if@NKT@English
-  \tocchaptertitlewidth 60pt
-  \tocsectiontitlewidth 36pt
-  \tocsubsectiontitlewidth 60pt
-\else
-  \tocchaptertitlewidth 42pt
-  \tocsectiontitlewidth 42pt
-  \tocsubsectiontitlewidth 60pt
-\fi
+% 以下似乎是为了目录缩进所定义的，但似乎不应该从此处定义缩进，而是考虑调整 \tocsectionindent等
+% \if@NKT@English
+%   \tocchaptertitlewidth 60pt
+%   \tocsectiontitlewidth 36pt
+%   \tocsubsectiontitlewidth 60pt
+% \else
+%   \tocchaptertitlewidth 42pt
+%   \tocsectiontitlewidth 42pt
+%   \tocsubsectiontitlewidth 60pt
+%   \fi
+% \fi
 
 \def\l@part#1#2{
   \addpenalty{\@secpenalty}
@@ -350,17 +383,46 @@
 \def\setnewwidth#1{
   \def\numberline{\csname NKT#1numberline\endcsname}}
 
-\def\NKTchapternumberline#1{
-  \NKT@settoctitlewidth{chapter}{#1}
-  \hbox to \NKT@tempdim{#1\hfil}\hskip \toctitlesep}
+\if@NKT@English
+  \def\NKTchapternumberline#1{
+    \NKT@settoctitlewidth{chapter}{#1}
+    \hbox to \NKT@tempdim{#1\hfil}\hskip \toctitlesep}
 
-\def\NKTsectionnumberline#1{
-  \NKT@settoctitlewidth{section}{#1}
-  \hbox to \NKT@tempdim{\hfil #1}\hskip \toctitlesep}
+  \def\NKTsectionnumberline#1{
+    \NKT@settoctitlewidth{section}{#1}
+    \hbox to \NKT@tempdim{\hfil #1}\hskip \toctitlesep}
 
-\def\NKTsubsectionnumberline#1{
-  \NKT@settoctitlewidth{subsection}{#1}
-  \hbox to \NKT@tempdim{\hfil #1}\hskip \toctitlesep}
+  \def\NKTsubsectionnumberline#1{
+    \NKT@settoctitlewidth{subsection}{#1}
+    \hbox to \NKT@tempdim{\hfil #1}\hskip \toctitlesep}
+
+  \else
+  \if@NKT@ENheadings
+    \def\NKTchapternumberline#1{
+      \NKT@settoctitlewidth{chapter}{#1}
+      \hbox to \NKT@tempdim{#1\hfil}\hskip \toctitlesep}
+
+    \def\NKTsectionnumberline#1{
+      \NKT@settoctitlewidth{section}{#1}
+      \hbox to \NKT@tempdim{\hfil #1}\hskip \toctitlesep}
+
+    \def\NKTsubsectionnumberline#1{
+      \NKT@settoctitlewidth{subsection}{#1}
+      \hbox to \NKT@tempdim{\hfil #1}\hskip \toctitlesep}
+  \else
+    \def\NKTchapternumberline#1{
+      \NKT@settoctitlewidth{chapter}{#1}
+      \hbox to \NKT@tempdim{#1\hfil}\hskip \toctitlesep}
+    
+    \def\NKTsectionnumberline#1{
+      \NKT@settoctitlewidth{section}{#1}
+      \hbox to \NKT@tempdim{\hfil #1}\hskip \toctitlesep}
+    
+    \def\NKTsubsectionnumberline#1{
+      \NKT@settoctitlewidth{subsection}{#1}
+      \hbox to \NKT@tempdim{\hfil #1}、} %\hskip \toctitlesep}
+  \fi
+\fi
 
 \def\NKT@settoctitlewidth#1#2{
   \settowidth\NKT@tempdim{#2}
@@ -541,6 +603,7 @@
 
 \def\sectionname{\thesection}
 \def\subsectionname{\thesubsection}
+\def\subsubsectionname{\thesubsubsection}
 
 
 \newcount\NKT@itemcnt
@@ -573,8 +636,8 @@
 \def\tocsubsectionfonts{\rmfamily\zihaowu}
 \def\tocleaders{$\cdot\!\cdot\!\cdot\ $}
 \def\tocchapterindent{0em}
-\def\tocsectionindent{2em}
-\def\tocsubsectionindent{2em}
+\def\tocsectionindent{1em}
+\def\tocsubsectionindent{2.4em}
 \def\toctitlesep{12pt}
 \def\NKT@toc@over@part{12pt}
 \def\NKT@toc@below@part{6pt}
