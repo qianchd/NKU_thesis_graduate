@@ -193,6 +193,7 @@
 \def\section{
   \@startsection{section}{1}{\z@}{24pt}{6pt}{\sectionformat}}
 
+% 利用定义变量cntformat的技巧自定义标题序号的样式，借鉴：https://tex.stackexchange.com/questions/308737/seccntformat-only-for-section
 \if@NKT@English
 \def\subsection{
   \@startsection{subsection}{2}{\z@}{12pt}{6pt}{\subsectionformat}}
@@ -391,6 +392,7 @@
 \def\setnewwidth#1{
   \def\numberline{\csname NKT#1numberline\endcsname}}
 
+% 因为利用定义变量cntformat的技巧自定义标题序号的样式，所以目录部分需要相应补充修改。
 \if@NKT@English
   \def\NKTchapternumberline#1{
     \NKT@settoctitlewidth{chapter}{#1}
