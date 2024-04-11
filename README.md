@@ -1,11 +1,5 @@
-# 南开大学硕博毕业论文模板（2024）- NKU thesis template for graduate students (2024)
-
-## 链接
-Github: [NKU_thesis_graduate](https://github.com/qianchd/NKU_thesis_graduate)
-
-Overleaf: [NKU_thesis_graduate](https://www.overleaf.com/read/rytpskmrrhjc#f350c6)
-
-南开大学图书馆: [NKU_thesis_graduate](https://libpaper.nankai.edu.cn/newlist.action)
+# NKU_thesis_graduate
+南开大学硕博毕业论文模板（2024）- NKU thesis template for graduate students
 
 ## 历史来源
 该毕业模板在互联网上有非常多版本，其最早的来源应是数学院[孙文昌老师](https://my.nankai.edu.cn/sms/swc/list.htm)制作的， 可惜原始的数院[个人网页](http://222.30.48.141/~sunwch/)已经无法访问。孙老师是早期[xeCJK](https://ctan.org/pkg/xecjk)包的作者，也基本是南开数学院学生LaTeX语言的启蒙人，大部分数学院本科生的LaTeX大概是孙老师的暑期小学期课程教授的。
@@ -18,9 +12,13 @@ Overleaf: [NKU_thesis_graduate](https://www.overleaf.com/read/rytpskmrrhjc#f350c
 
 - 添加2024年最新版南开大学研究生学位论文写作规范。
 - 添加相应需要的字体。
-- 修改授权书和原创性声明为2024年新版。
+- 修改授权书和原创性声明为2024年新版 (未通过相关老师校对以及验证。作者只保证目前肉眼所见和word版本基本排版一致。作者不保证按此版本提交可以通过图书馆检查)。
 - 修改XeLaTeX编译下关于 Time News Roman 英文字体支持的bug。这是一个存在许多年的bug。
 - 在Texlive2022、Texlive2023、MikTex等发行版下，在Windows11系统，wsl2-ubuntu 以及 Ubuntu系统下测试编译通过。
+- 根据最新版本要求，更新了目录的缩进为1个中文字符，
+- 实现了中文和数字两种标题编号样式，添加了标题编号深度。
+    - 可以通过```ENheadings```的宏包选项采用数字编号样式。
+    - 在中文编号样式下，对小节的交叉引用可以如下进行：```\ref{sec:a}的第\ref{subsec:b}小节```。
 
 ## 字体支持
 
@@ -38,4 +36,7 @@ sudo fc-cache -fv
 ```
 
 ## 待办
-- 因Overleaf不支持商业化字体，目前仍未适配Overleaf上XeLaTeX编译
+以下待办欢迎PR。
+- ~~因Overleaf不支持商业化字体，目前仍未适配Overleaf.~~ —— 更新，当前版本支持overleaf上 pdflatex 编译，[模板](https://www.overleaf.com/read/rytpskmrrhjc#f350c6)；尚未支持XeLatex编译。
+- XeLaTeX编译下有数十个warnings，PdfLaTeX下有十几个, 精力有限，待后来人改进。
+- main.tex 对应的帮助文档是过时的，需要更新。
