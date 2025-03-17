@@ -1,6 +1,10 @@
 # NKU_thesis_graduate
 南开大学硕博毕业论文模板（2024）- NKU thesis template for graduate students
 
+## 对模板自定义修改和使用需求的讨论
+可以移步[讨论区](https://github.com/qianchd/NKU_thesis_graduate/discussions)，查看已有的讨论、发布见解和修改、使用经验，提求助帖进行讨论。精力有限，会尽力回答相关问题，也欢迎所有人参与讨论。
+
+
 ## 历史来源
 该毕业模板在互联网上有非常多版本，其最早的来源应是数学院[孙文昌老师](https://my.nankai.edu.cn/sms/swc/list.htm)制作的， 可惜原始的数院[个人网页](http://222.30.48.141/~sunwch/)已经无法访问。孙老师是早期[xeCJK](https://ctan.org/pkg/xecjk)包的作者，也基本是南开数学院学生LaTeX语言的启蒙人，大部分数学院本科生的LaTeX大概是孙老师的暑期小学期课程教授的。
 
